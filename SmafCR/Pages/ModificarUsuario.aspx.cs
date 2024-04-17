@@ -100,16 +100,32 @@ namespace SmafCR.Pages
 
                 int idrol = Convert.ToInt32(DdlRolesUsuario.SelectedItem.Value);
 
+
                 // esto valida que se haya digitado info en el txt
                 if (!string.IsNullOrEmpty(TxtContrasenniaUsuario.Text.Trim()))
                 {
                     contrasennia = TxtContrasenniaUsuario.Text.Trim();
                 }
 
+
+
                 //llamamos al sp de modicar usuario
                 using (PV_SmafCREntities db = new PV_SmafCREntities())
                 {
                     db.SPUsuarioModificar(idUsuario, nombre, email, telefono, contrasennia, idrol);
+
+
+                    // Determinar si se debe agregar un cliente o un instructor según el ID del rol seleccionado
+                    if (idrol == 2) // ID del rol para instructor
+                    {
+                        // Llamar al método para agregar un instructor
+                        //AgregarInstructor();
+                    }
+                    else if (idrol == 3) // ID del rol para cliente
+                    {
+                        // Llamar al método para agregar un cliente
+                        //AgregarCliente();
+                    }
                 }
 
             }
