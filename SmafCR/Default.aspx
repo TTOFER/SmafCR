@@ -4,8 +4,8 @@
 
     <main>
     <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="aspnetTitle">Proyecto de Clase - Progra 5</h1>
-        <p class="lead">Proyecto creado con ASP.NET</p>
+        <h1 id="aspnetTitle">Proyecto Final - Progra 5</h1>
+        <p class="lead">Academia de Artes Marciales - Smaf Costa Rica</p>
         <p><a href="Pages/ListaUsuarios.aspx" class="btn btn-primary btn-md">Ir al proyecto &raquo;</a></p>
     </section>
 
