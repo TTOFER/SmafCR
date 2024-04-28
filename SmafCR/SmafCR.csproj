@@ -142,12 +142,24 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\img-user.png" />
+    <Content Include="Pages\AgregarMembresia.aspx" />
     <Content Include="Pages\Error.aspx" />
+    <Content Include="Pages\ErrorMembresia.aspx" />
+    <Content Include="Pages\ExitoAgregarMembresia.aspx" />
     <Content Include="Pages\ExitoAgregarUsuario.aspx" />
+    <Content Include="Pages\ExitoEliminarMembresia.aspx" />
     <Content Include="Pages\ExitoEliminarUsuario.aspx" />
+    <Content Include="Pages\ExitoModificarMembresia.aspx" />
     <Content Include="Pages\ExitoModificarUsuario.aspx" />
+    <Content Include="Pages\ListaAsistencia.aspx" />
+    <Content Include="Pages\ListaClientes.aspx" />
+    <Content Include="Pages\ListaInstructores.aspx" />
+    <Content Include="Pages\ListaMembresias.aspx" />
     <Content Include="Pages\ListaUsuarios.aspx" />
     <Content Include="Pages\AgregarUsuario.aspx" />
+    <Content Include="Pages\Mensaje.aspx" />
+    <Content Include="Pages\ModificarMembresia.aspx" />
     <Content Include="Pages\ModificarUsuario.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -249,6 +261,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbSmafCR.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DbContext\SPClientesListar_Result.cs">
+      <DependentUpon>DbSmafCR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContext\SPInstructoresListar_Result.cs">
+      <DependentUpon>DbSmafCR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContext\SPMembresiaConsultarPorID_Result.cs">
+      <DependentUpon>DbSmafCR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbContext\SPMembresiasListar_Result.cs">
+      <DependentUpon>DbSmafCR.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbContext\SPUsuarioConsultarPorID_Result.cs">
       <DependentUpon>DbSmafCR.tt</DependentUpon>
     </Compile>
@@ -277,12 +301,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AgregarMembresia.aspx.cs">
+      <DependentUpon>AgregarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AgregarMembresia.aspx.designer.cs">
+      <DependentUpon>AgregarMembresia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ErrorMembresia.aspx.cs">
+      <DependentUpon>ErrorMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ErrorMembresia.aspx.designer.cs">
+      <DependentUpon>ErrorMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExitoAgregarMembresia.aspx.cs">
+      <DependentUpon>ExitoAgregarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ExitoAgregarMembresia.aspx.designer.cs">
+      <DependentUpon>ExitoAgregarMembresia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExitoAgregarUsuario.aspx.cs">
       <DependentUpon>ExitoAgregarUsuario.aspx</DependentUpon>
@@ -291,6 +336,13 @@
     <Compile Include="Pages\ExitoAgregarUsuario.aspx.designer.cs">
       <DependentUpon>ExitoAgregarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ExitoEliminarMembresia.aspx.cs">
+      <DependentUpon>ExitoEliminarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ExitoEliminarMembresia.aspx.designer.cs">
+      <DependentUpon>ExitoEliminarMembresia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ExitoEliminarUsuario.aspx.cs">
       <DependentUpon>ExitoEliminarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,12 +350,47 @@
     <Compile Include="Pages\ExitoEliminarUsuario.aspx.designer.cs">
       <DependentUpon>ExitoEliminarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ExitoModificarMembresia.aspx.cs">
+      <DependentUpon>ExitoModificarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ExitoModificarMembresia.aspx.designer.cs">
+      <DependentUpon>ExitoModificarMembresia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ExitoModificarUsuario.aspx.cs">
       <DependentUpon>ExitoModificarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\ExitoModificarUsuario.aspx.designer.cs">
       <DependentUpon>ExitoModificarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaAsistencia.aspx.cs">
+      <DependentUpon>ListaAsistencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListaAsistencia.aspx.designer.cs">
+      <DependentUpon>ListaAsistencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaClientes.aspx.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListaClientes.aspx.designer.cs">
+      <DependentUpon>ListaClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaInstructores.aspx.cs">
+      <DependentUpon>ListaInstructores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListaInstructores.aspx.designer.cs">
+      <DependentUpon>ListaInstructores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ListaMembresias.aspx.cs">
+      <DependentUpon>ListaMembresias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ListaMembresias.aspx.designer.cs">
+      <DependentUpon>ListaMembresias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ListaUsuarios.aspx.cs">
       <DependentUpon>ListaUsuarios.aspx</DependentUpon>
@@ -318,6 +405,20 @@
     </Compile>
     <Compile Include="Pages\AgregarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Mensaje.aspx.cs">
+      <DependentUpon>Mensaje.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Mensaje.aspx.designer.cs">
+      <DependentUpon>Mensaje.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModificarMembresia.aspx.cs">
+      <DependentUpon>ModificarMembresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ModificarMembresia.aspx.designer.cs">
+      <DependentUpon>ModificarMembresia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ModificarUsuario.aspx.cs">
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>

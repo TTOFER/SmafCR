@@ -131,31 +131,6 @@ namespace SmafCR.DbContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual int SPUsuarioAgregar(string nombre, string email, string telefono, string contrasennia, Nullable<int> idRol)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("email", email) :
-                new ObjectParameter("email", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var contrasenniaParameter = contrasennia != null ?
-                new ObjectParameter("contrasennia", contrasennia) :
-                new ObjectParameter("contrasennia", typeof(string));
-    
-            var idRolParameter = idRol.HasValue ?
-                new ObjectParameter("idRol", idRol) :
-                new ObjectParameter("idRol", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioAgregar", nombreParameter, emailParameter, telefonoParameter, contrasenniaParameter, idRolParameter);
-        }
-    
         public virtual ObjectResult<SPUsuarioConsultarPorID_Result> SPUsuarioConsultarPorID(Nullable<int> idUsuario)
         {
             var idUsuarioParameter = idUsuario.HasValue ?
@@ -211,6 +186,128 @@ namespace SmafCR.DbContext
                 new ObjectParameter("idrol", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioModificar", idUsuarioParameter, nombreParameter, emailParameter, telefonoParameter, contrasenniaParameter, idrolParameter);
+        }
+    
+        public virtual int SPClienteAgregar(Nullable<int> usuarioID)
+        {
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("usuarioID", usuarioID) :
+                new ObjectParameter("usuarioID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPClienteAgregar", usuarioIDParameter);
+        }
+    
+        public virtual int SPInstructorAgregar(Nullable<int> usuarioID)
+        {
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("usuarioID", usuarioID) :
+                new ObjectParameter("usuarioID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPInstructorAgregar", usuarioIDParameter);
+        }
+    
+        public virtual int SPUsuarioAgregar(string nombre, string email, string telefono, string contrasennia, Nullable<int> idRol)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var contrasenniaParameter = contrasennia != null ?
+                new ObjectParameter("contrasennia", contrasennia) :
+                new ObjectParameter("contrasennia", typeof(string));
+    
+            var idRolParameter = idRol.HasValue ?
+                new ObjectParameter("idRol", idRol) :
+                new ObjectParameter("idRol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioAgregar", nombreParameter, emailParameter, telefonoParameter, contrasenniaParameter, idRolParameter);
+        }
+    
+        public virtual ObjectResult<SPClientesListar_Result> SPClientesListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPClientesListar_Result>("SPClientesListar");
+        }
+    
+        public virtual ObjectResult<SPInstructoresListar_Result> SPInstructoresListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPInstructoresListar_Result>("SPInstructoresListar");
+        }
+    
+        public virtual ObjectResult<SPMembresiasListar_Result> SPMembresiasListar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPMembresiasListar_Result>("SPMembresiasListar");
+        }
+    
+        public virtual int SPMembresiaAgregar(Nullable<int> clienteID, Nullable<System.DateTime> fecha_Inicio, Nullable<System.DateTime> fecha_fin, Nullable<decimal> monto)
+        {
+            var clienteIDParameter = clienteID.HasValue ?
+                new ObjectParameter("clienteID", clienteID) :
+                new ObjectParameter("clienteID", typeof(int));
+    
+            var fecha_InicioParameter = fecha_Inicio.HasValue ?
+                new ObjectParameter("fecha_Inicio", fecha_Inicio) :
+                new ObjectParameter("fecha_Inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("monto", monto) :
+                new ObjectParameter("monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPMembresiaAgregar", clienteIDParameter, fecha_InicioParameter, fecha_finParameter, montoParameter);
+        }
+    
+        public virtual ObjectResult<SPMembresiaConsultarPorID_Result> SPMembresiaConsultarPorID(Nullable<int> idMembresia)
+        {
+            var idMembresiaParameter = idMembresia.HasValue ?
+                new ObjectParameter("idMembresia", idMembresia) :
+                new ObjectParameter("idMembresia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPMembresiaConsultarPorID_Result>("SPMembresiaConsultarPorID", idMembresiaParameter);
+        }
+    
+        public virtual int SPMembresiaEliminar(Nullable<int> idMembresia)
+        {
+            var idMembresiaParameter = idMembresia.HasValue ?
+                new ObjectParameter("idMembresia", idMembresia) :
+                new ObjectParameter("idMembresia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPMembresiaEliminar", idMembresiaParameter);
+        }
+    
+        public virtual int SPMembresiaModificar(Nullable<int> idMembresia, Nullable<int> idCliente, Nullable<System.DateTime> fecha_Inicio, Nullable<System.DateTime> fecha_fin, Nullable<decimal> monto)
+        {
+            var idMembresiaParameter = idMembresia.HasValue ?
+                new ObjectParameter("idMembresia", idMembresia) :
+                new ObjectParameter("idMembresia", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("idCliente", idCliente) :
+                new ObjectParameter("idCliente", typeof(int));
+    
+            var fecha_InicioParameter = fecha_Inicio.HasValue ?
+                new ObjectParameter("fecha_Inicio", fecha_Inicio) :
+                new ObjectParameter("fecha_Inicio", typeof(System.DateTime));
+    
+            var fecha_finParameter = fecha_fin.HasValue ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(System.DateTime));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("monto", monto) :
+                new ObjectParameter("monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPMembresiaModificar", idMembresiaParameter, idClienteParameter, fecha_InicioParameter, fecha_finParameter, montoParameter);
         }
     }
 }

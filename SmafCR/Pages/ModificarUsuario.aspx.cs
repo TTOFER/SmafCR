@@ -113,19 +113,6 @@ namespace SmafCR.Pages
                 using (PV_SmafCREntities db = new PV_SmafCREntities())
                 {
                     db.SPUsuarioModificar(idUsuario, nombre, email, telefono, contrasennia, idrol);
-
-
-                    // Determinar si se debe agregar un cliente o un instructor según el ID del rol seleccionado
-                    if (idrol == 2) // ID del rol para instructor
-                    {
-                        // Llamar al método para agregar un instructor
-                        //AgregarInstructor();
-                    }
-                    else if (idrol == 3) // ID del rol para cliente
-                    {
-                        // Llamar al método para agregar un cliente
-                        //AgregarCliente();
-                    }
                 }
 
             }

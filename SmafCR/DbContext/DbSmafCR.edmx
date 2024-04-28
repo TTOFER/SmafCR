@@ -36,6 +36,34 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPClienteAgregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuarioID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPClientesListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPInstructorAgregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuarioID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPInstructoresListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPMembresiaAgregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clienteID" Type="int" Mode="In" />
+          <Parameter Name="fecha_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="fecha_fin" Type="datetime" Mode="In" />
+          <Parameter Name="monto" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SPMembresiaConsultarPorID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMembresia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPMembresiaEliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMembresia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SPMembresiaModificar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idMembresia" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="fecha_Inicio" Type="datetime" Mode="In" />
+          <Parameter Name="fecha_fin" Type="datetime" Mode="In" />
+          <Parameter Name="monto" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SPMembresiasListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SPUsuarioAgregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="email" Type="varchar" Mode="In" />
@@ -95,13 +123,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="SPUsuarioAgregar">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="contrasennia" Mode="In" Type="String" />
-            <Parameter Name="idRol" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPUsuarioConsultarPorID" ReturnType="Collection(PV_SmafCRModel.SPUsuarioConsultarPorID_Result)">
           <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -117,6 +138,41 @@
             <Parameter Name="telefono" Mode="In" Type="String" />
             <Parameter Name="contrasennia" Mode="In" Type="String" />
             <Parameter Name="idrol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPClienteAgregar">
+          <Parameter Name="usuarioID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPInstructorAgregar">
+          <Parameter Name="usuarioID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPUsuarioAgregar">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="contrasennia" Mode="In" Type="String" />
+            <Parameter Name="idRol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPClientesListar" ReturnType="Collection(PV_SmafCRModel.SPClientesListar_Result)" />
+          <FunctionImport Name="SPInstructoresListar" ReturnType="Collection(PV_SmafCRModel.SPInstructoresListar_Result)" />
+          <FunctionImport Name="SPMembresiasListar" ReturnType="Collection(PV_SmafCRModel.SPMembresiasListar_Result)" />
+          <FunctionImport Name="SPMembresiaAgregar">
+            <Parameter Name="clienteID" Mode="In" Type="Int32" />
+            <Parameter Name="fecha_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SPMembresiaConsultarPorID" ReturnType="Collection(PV_SmafCRModel.SPMembresiaConsultarPorID_Result)">
+          <Parameter Name="idMembresia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPMembresiaEliminar">
+          <Parameter Name="idMembresia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPMembresiaModificar">
+            <Parameter Name="idMembresia" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="fecha_Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
+            <Parameter Name="monto" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -153,6 +209,39 @@
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="descrip" Nullable="false" MaxLength="255" />
         </ComplexType>
+        <ComplexType Name="SPClientesListar_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Contrasennia" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="UsuarioRolID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SPInstructoresListar_Result">
+          <Property Type="Int32" Name="InstructorID" Nullable="false" />
+          <Property Type="Int32" Name="UsuarioID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Contrasennia" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="UsuarioRolID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SPMembresiasListar_Result">
+          <Property Type="Int32" Name="MembresiaID" Nullable="false" />
+          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Fecha_Fin" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="9" />
+        </ComplexType>
+        <ComplexType Name="SPMembresiaConsultarPorID_Result">
+          <Property Type="Int32" Name="MembresiaID" Nullable="false" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Fecha_Fin" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="10" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -183,7 +272,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PV_SmafCRModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PV_SmafCRModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="SPUsuarioAgregar" FunctionName="PV_SmafCRModel.Store.SPUsuarioAgregar" />
           <FunctionImportMapping FunctionImportName="SPUsuarioConsultarPorID" FunctionName="PV_SmafCRModel.Store.SPUsuarioConsultarPorID">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PV_SmafCRModel.SPUsuarioConsultarPorID_Result">
@@ -217,6 +305,61 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPUsuarioModificar" FunctionName="PV_SmafCRModel.Store.SPUsuarioModificar" />
+          <FunctionImportMapping FunctionImportName="SPClienteAgregar" FunctionName="PV_SmafCRModel.Store.SPClienteAgregar" />
+          <FunctionImportMapping FunctionImportName="SPInstructorAgregar" FunctionName="PV_SmafCRModel.Store.SPInstructorAgregar" />
+          <FunctionImportMapping FunctionImportName="SPUsuarioAgregar" FunctionName="PV_SmafCRModel.Store.SPUsuarioAgregar" />
+          <FunctionImportMapping FunctionImportName="SPClientesListar" FunctionName="PV_SmafCRModel.Store.SPClientesListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PV_SmafCRModel.SPClientesListar_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Contrasennia" ColumnName="Contrasennia" />
+                <ScalarProperty Name="UsuarioRolID" ColumnName="UsuarioRolID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPInstructoresListar" FunctionName="PV_SmafCRModel.Store.SPInstructoresListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PV_SmafCRModel.SPInstructoresListar_Result">
+                <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Contrasennia" ColumnName="Contrasennia" />
+                <ScalarProperty Name="UsuarioRolID" ColumnName="UsuarioRolID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPMembresiasListar" FunctionName="PV_SmafCRModel.Store.SPMembresiasListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PV_SmafCRModel.SPMembresiasListar_Result">
+                <ScalarProperty Name="MembresiaID" ColumnName="MembresiaID" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPMembresiaAgregar" FunctionName="PV_SmafCRModel.Store.SPMembresiaAgregar" />
+          <FunctionImportMapping FunctionImportName="SPMembresiaConsultarPorID" FunctionName="PV_SmafCRModel.Store.SPMembresiaConsultarPorID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PV_SmafCRModel.SPMembresiaConsultarPorID_Result">
+                <ScalarProperty Name="MembresiaID" ColumnName="MembresiaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPMembresiaEliminar" FunctionName="PV_SmafCRModel.Store.SPMembresiaEliminar" />
+          <FunctionImportMapping FunctionImportName="SPMembresiaModificar" FunctionName="PV_SmafCRModel.Store.SPMembresiaModificar" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
