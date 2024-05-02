@@ -36,6 +36,10 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SPAsistenciaRegistrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha" Type="varchar" Mode="In" />
+          <Parameter Name="clienteID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SPClienteAgregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="usuarioID" Type="int" Mode="In" />
         </Function>
@@ -126,9 +130,6 @@
           <FunctionImport Name="SPUsuarioConsultarPorID" ReturnType="Collection(PV_SmafCRModel.SPUsuarioConsultarPorID_Result)">
           <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SPUsuarioEliminar">
-          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="SPUsuariosListar" ReturnType="Collection(PV_SmafCRModel.SPUsuariosListar_Result)" />
           <FunctionImport Name="SPUsuarioRolListar" ReturnType="Collection(PV_SmafCRModel.SPUsuarioRolListar_Result1)" />
           <FunctionImport Name="SPUsuarioModificar">
@@ -144,13 +145,6 @@
           </FunctionImport>
           <FunctionImport Name="SPInstructorAgregar">
           <Parameter Name="usuarioID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SPUsuarioAgregar">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="email" Mode="In" Type="String" />
-            <Parameter Name="telefono" Mode="In" Type="String" />
-            <Parameter Name="contrasennia" Mode="In" Type="String" />
-            <Parameter Name="idRol" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SPClientesListar" ReturnType="Collection(PV_SmafCRModel.SPClientesListar_Result)" />
           <FunctionImport Name="SPInstructoresListar" ReturnType="Collection(PV_SmafCRModel.SPInstructoresListar_Result)" />
@@ -173,6 +167,20 @@
             <Parameter Name="fecha_Inicio" Mode="In" Type="DateTime" />
             <Parameter Name="fecha_fin" Mode="In" Type="DateTime" />
             <Parameter Name="monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SPAsistenciaRegistrar">
+            <Parameter Name="fecha" Mode="In" Type="String" />
+            <Parameter Name="clienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPUsuarioAgregar">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+            <Parameter Name="contrasennia" Mode="In" Type="String" />
+            <Parameter Name="idRol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SPUsuarioEliminar">
+            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -284,7 +292,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SPUsuarioEliminar" FunctionName="PV_SmafCRModel.Store.SPUsuarioEliminar" />
           <FunctionImportMapping FunctionImportName="SPUsuariosListar" FunctionName="PV_SmafCRModel.Store.SPUsuariosListar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PV_SmafCRModel.SPUsuariosListar_Result">
@@ -307,7 +314,6 @@
           <FunctionImportMapping FunctionImportName="SPUsuarioModificar" FunctionName="PV_SmafCRModel.Store.SPUsuarioModificar" />
           <FunctionImportMapping FunctionImportName="SPClienteAgregar" FunctionName="PV_SmafCRModel.Store.SPClienteAgregar" />
           <FunctionImportMapping FunctionImportName="SPInstructorAgregar" FunctionName="PV_SmafCRModel.Store.SPInstructorAgregar" />
-          <FunctionImportMapping FunctionImportName="SPUsuarioAgregar" FunctionName="PV_SmafCRModel.Store.SPUsuarioAgregar" />
           <FunctionImportMapping FunctionImportName="SPClientesListar" FunctionName="PV_SmafCRModel.Store.SPClientesListar">
             <ResultMapping>
               <ComplexTypeMapping TypeName="PV_SmafCRModel.SPClientesListar_Result">
@@ -360,6 +366,9 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SPMembresiaEliminar" FunctionName="PV_SmafCRModel.Store.SPMembresiaEliminar" />
           <FunctionImportMapping FunctionImportName="SPMembresiaModificar" FunctionName="PV_SmafCRModel.Store.SPMembresiaModificar" />
+          <FunctionImportMapping FunctionImportName="SPAsistenciaRegistrar" FunctionName="PV_SmafCRModel.Store.SPAsistenciaRegistrar" />
+          <FunctionImportMapping FunctionImportName="SPUsuarioAgregar" FunctionName="PV_SmafCRModel.Store.SPUsuarioAgregar" />
+          <FunctionImportMapping FunctionImportName="SPUsuarioEliminar" FunctionName="PV_SmafCRModel.Store.SPUsuarioEliminar" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

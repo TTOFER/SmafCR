@@ -140,15 +140,6 @@ namespace SmafCR.DbContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPUsuarioConsultarPorID_Result>("SPUsuarioConsultarPorID", idUsuarioParameter);
         }
     
-        public virtual int SPUsuarioEliminar(Nullable<int> idUsuario)
-        {
-            var idUsuarioParameter = idUsuario.HasValue ?
-                new ObjectParameter("idUsuario", idUsuario) :
-                new ObjectParameter("idUsuario", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioEliminar", idUsuarioParameter);
-        }
-    
         public virtual ObjectResult<SPUsuariosListar_Result> SPUsuariosListar()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SPUsuariosListar_Result>("SPUsuariosListar");
@@ -204,31 +195,6 @@ namespace SmafCR.DbContext
                 new ObjectParameter("usuarioID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPInstructorAgregar", usuarioIDParameter);
-        }
-    
-        public virtual int SPUsuarioAgregar(string nombre, string email, string telefono, string contrasennia, Nullable<int> idRol)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("email", email) :
-                new ObjectParameter("email", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("telefono", telefono) :
-                new ObjectParameter("telefono", typeof(string));
-    
-            var contrasenniaParameter = contrasennia != null ?
-                new ObjectParameter("contrasennia", contrasennia) :
-                new ObjectParameter("contrasennia", typeof(string));
-    
-            var idRolParameter = idRol.HasValue ?
-                new ObjectParameter("idRol", idRol) :
-                new ObjectParameter("idRol", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioAgregar", nombreParameter, emailParameter, telefonoParameter, contrasenniaParameter, idRolParameter);
         }
     
         public virtual ObjectResult<SPClientesListar_Result> SPClientesListar()
@@ -308,6 +274,53 @@ namespace SmafCR.DbContext
                 new ObjectParameter("monto", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPMembresiaModificar", idMembresiaParameter, idClienteParameter, fecha_InicioParameter, fecha_finParameter, montoParameter);
+        }
+    
+        public virtual int SPAsistenciaRegistrar(string fecha, Nullable<int> clienteID)
+        {
+            var fechaParameter = fecha != null ?
+                new ObjectParameter("fecha", fecha) :
+                new ObjectParameter("fecha", typeof(string));
+    
+            var clienteIDParameter = clienteID.HasValue ?
+                new ObjectParameter("clienteID", clienteID) :
+                new ObjectParameter("clienteID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPAsistenciaRegistrar", fechaParameter, clienteIDParameter);
+        }
+    
+        public virtual int SPUsuarioAgregar(string nombre, string email, string telefono, string contrasennia, Nullable<int> idRol)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("telefono", telefono) :
+                new ObjectParameter("telefono", typeof(string));
+    
+            var contrasenniaParameter = contrasennia != null ?
+                new ObjectParameter("contrasennia", contrasennia) :
+                new ObjectParameter("contrasennia", typeof(string));
+    
+            var idRolParameter = idRol.HasValue ?
+                new ObjectParameter("idRol", idRol) :
+                new ObjectParameter("idRol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioAgregar", nombreParameter, emailParameter, telefonoParameter, contrasenniaParameter, idRolParameter);
+        }
+    
+        public virtual int SPUsuarioEliminar(Nullable<int> idUsuario)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("idUsuario", idUsuario) :
+                new ObjectParameter("idUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPUsuarioEliminar", idUsuarioParameter);
         }
     }
 }
